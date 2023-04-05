@@ -5,10 +5,10 @@ export const Navbar = () => {
     return (
         <nav className={s.nav}>
             <div className={s.item}>
-                <a>Profile</a>
+                <a href="/profile">Profile</a>
             </div >
             <div className={s.item}>
-                <a>Messenger</a>
+                <a href="/dialogs">Messenger</a>
             </div>
             <div className={s.item}>
                 <a>News</a>
