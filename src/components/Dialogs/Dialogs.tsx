@@ -4,25 +4,25 @@ import {NavLink} from "react-router-dom";
 
 
 type DialogItemType = {
-    name:string
-    id:number
+    name: string
+    id: number
 }
-const DialogItem = (props:DialogItemType) => {
+const DialogItem = (props: DialogItemType) => {
 
-    let path = '/dialogs/'+ props.id
+    let path = '/dialogs/' + props.id
 
-    return(
-        <div className= {s.dialog}>
+    return (
+        <div className={s.dialog}>
             <NavLink to={path}>{props.name}</NavLink>
         </div>
     )
 }
 
 type MessageType = {
-    message:string
+    message: string
 }
 
-const Message = (props:MessageType)=> {
+const Message = (props: MessageType) => {
     return (
         <div className={s.message}>
             {props.message}
@@ -30,25 +30,40 @@ const Message = (props:MessageType)=> {
     )
 }
 
-type DialogsType = {
-
-}
+type DialogsType = {}
 export const Dialogs = () => {
 
-        return (
-            <div className={s.dialogs}>
-                <div className={s.dialogsItems}>
-                    <DialogItem name='Mikhail' id={1} />
-                    <DialogItem name='Svetlana' id={2}/>
-                    <DialogItem name='Daria' id={3} />
-                    <DialogItem name='Pavel' id={4}/>
-                </div>
-                <div className={s.messages}>
-                 <Message message='Hi' />
-                 <Message message='How is your It' />
-                 <Message message='Yo' />
-                </div>
-            </div>
+    let dialogsData = [
+        {id: 1, name: 'Mikhail'},
+        {id: 2, name: 'Svetlana'},
+        {id: 3, name: 'Daria'},
+        {id: 4, name: 'Pavel'},
+    ]
 
-        )
+    let messagesData = [
+        {id: 1, message: 'Hi'},
+        {id: 2, message: 'How is your It'},
+        {id: 3, message: 'Yo'},
+    ]
+
+    return (
+        <div className={s.dialogs}>
+            <div className={s.dialogsItems}>
+                {dialogsData.map((el) => {
+                    return (
+                        <div key={el.id}>{el.name}</div>
+                    )
+                })}
+
+            </div>
+            <div className={s.messages}>
+                {messagesData.map((el)=>{
+                    return(
+                        <div key={el.id}>{el.message}</div>
+                    )
+                })}
+            </div>
+        </div>
+
+    )
 }
